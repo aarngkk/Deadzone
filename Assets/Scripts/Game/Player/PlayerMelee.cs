@@ -11,7 +11,6 @@ public class PlayerMelee : MonoBehaviour
     public GameObject meleeHitbox;
     private Animator animator;
     private bool meleeContinuously;
-    private bool meleeSingle;
     private float lastMeleeTime;
 
     private void Awake()
@@ -20,7 +19,7 @@ public class PlayerMelee : MonoBehaviour
     }
     void Update()
     {
-        if (meleeContinuously || meleeSingle)
+        if (meleeContinuously)
         {
             float timeSinceLastMelee = Time.time - lastMeleeTime;
 
@@ -29,7 +28,6 @@ public class PlayerMelee : MonoBehaviour
                 StartCoroutine(PerformMeleeAttack());
 
                 lastMeleeTime = Time.time;
-                meleeSingle = false;
 
                 animator.SetTrigger("IsMeleeAttacking");
             }
@@ -46,10 +44,5 @@ public class PlayerMelee : MonoBehaviour
     private void OnMelee(InputValue inputValue)
     {
         meleeContinuously = inputValue.isPressed;
-
-        if (inputValue.isPressed)
-        {
-            meleeSingle = true;
-        }
     }
 }
