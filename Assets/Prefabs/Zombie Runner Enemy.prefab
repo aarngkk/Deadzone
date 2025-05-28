@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1143739092325410307, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: chanceOfCollectableDrop
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303822624097514523, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: killScore
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449409456802093256, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: playerAwarenessDistance
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523154930840304115, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: speed
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523154930840304115, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: rotationSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4900826669717459464, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,9 +68,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5167598256169668198, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 88f83b7285003cc46886708ec2e65a16, type: 2}
+    - target: {fileID: 6558913885632134909, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8395284798035713577, guid: 95d53d51417f6c741a7b98329e2f9ed9, type: 3}
     - target: {fileID: 7037926041125462818, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_Name
-      value: Zombie Enemy
+      value: Zombie Runner Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: currentHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: maximumHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423051594702683801, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

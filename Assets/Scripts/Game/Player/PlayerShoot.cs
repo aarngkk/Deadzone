@@ -1,22 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public UnityEvent OnAmmoUIUpdate;
+
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunOffset;
     [SerializeField] private float timeBetweenShots;
-    [SerializeField] private int maxAmmo;
-    [SerializeField] private int currentAmmo;
     [SerializeField] private float reloadDuration;
+    [SerializeField] private AmmoUI ammoUI;
+    [SerializeField] private int maxAmmo = 15;
+    [SerializeField] private AudioClip reloadAudioClip;
+    [SerializeField] private float reloadVolume = 1f;
+    public int _maxAmmo => maxAmmo;
+    [SerializeField] private int currentAmmo = 15;
+    public int _currentAmmo => currentAmmo;
 
+    private Animator animator;
     private bool fireContinuously;
     private bool fireSingle;
     private float lastFireTime;
     private bool isReloading = false;
+    public bool IsReloading => isReloading;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        currentAmmo = maxAmmo;
+    }
 
     void Update()
     {
@@ -31,10 +47,11 @@ public class PlayerShoot : MonoBehaviour
                 lastFireTime = Time.time;
                 fireSingle = false;
                 currentAmmo--;
+                OnAmmoUIUpdate.Invoke();
             }
         }
 
-        else if (currentAmmo == 0 && !isReloading)
+        if (currentAmmo == 0 && !isReloading)
         {
             StartCoroutine(Reload());
         }
@@ -51,11 +68,17 @@ public class PlayerShoot : MonoBehaviour
     private IEnumerator Reload()
     {
         if (currentAmmo < maxAmmo)
-        {   
+        {
             isReloading = true;
+            animator.SetTrigger("IsReloading");
+
+            SoundFXManager.instance.PlaySoundFXClip(reloadAudioClip, transform, reloadVolume);
+
+            OnAmmoUIUpdate.Invoke();
             yield return new WaitForSeconds(reloadDuration);
             currentAmmo = maxAmmo;
             isReloading = false;
+            OnAmmoUIUpdate.Invoke();
         }
     }
 
@@ -66,6 +89,14 @@ public class PlayerShoot : MonoBehaviour
         if (inputValue.isPressed)
         {
             fireSingle = true;
+        }
+    }
+
+    private void OnReload(InputValue inputValue)
+    {
+        if (!isReloading && currentAmmo < maxAmmo)
+        {
+            StartCoroutine(Reload());
         }
     }
 }

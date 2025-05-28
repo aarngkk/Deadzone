@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: ce16484a759ed704f9bf5e0a4de0ef6e
+guid: ebd8c47a61f3da64599b7028444db316
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1303436610535718133
-    second: soldier1_die_0
+      213: -184972056001717211
+    second: soldier1_die_shaded_0
   - first:
-      213: 1421774372740258265
-    second: soldier1_die_1
+      213: 6357721291194891708
+    second: soldier1_die_shaded_1
   - first:
-      213: -5251529488992011461
-    second: soldier1_die_2
+      213: 6212197351790763056
+    second: soldier1_die_shaded_2
   - first:
-      213: -974452257960109775
-    second: soldier1_die_3
+      213: 3807480735949324867
+    second: soldier1_die_shaded_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 70
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,35 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soldier1_die_0
+      name: soldier1_die_shaded_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 77
-        width: 31
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b0387c10f4349ede0800000000000000
-      internalID: -1303436610535718133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soldier1_die_1
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 77
+        x: 13
+        y: 76
         width: 33
-        height: 43
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d9dfe552482bb310800000000000000
-      internalID: 1421774372740258265
+      spriteID: 52cd4a425e8de6df0800000000000000
+      internalID: -184972056001717211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soldier1_die_2
+      name: soldier1_die_shaded_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 12
-        width: 44
-        height: 43
+        x: 67
+        y: 76
+        width: 35
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3b7429e0c1de17b0800000000000000
-      internalID: -5251529488992011461
+      spriteID: cbdfb9664d92b3850800000000000000
+      internalID: 6357721291194891708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soldier1_die_3
+      name: soldier1_die_shaded_2
       rect:
         serializedVersion: 2
-        x: 56
-        y: 12
-        width: 44
-        height: 48
+        x: 1
+        y: 11
+        width: 46
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +168,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 139d5b195dc0a72f0800000000000000
-      internalID: -974452257960109775
+      spriteID: 03c5c1ce398263650800000000000000
+      internalID: 6212197351790763056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soldier1_die_shaded_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 11
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34207637e83e6d430800000000000000
+      internalID: 3807480735949324867
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 075932b1454af464aabc39c28c75823f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -208,14 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      soldier1_die_0: -1303436610535718133
-      soldier1_die_1: 1421774372740258265
-      soldier1_die_2: -5251529488992011461
-      soldier1_die_3: -974452257960109775
+      soldier1_die_shaded_0: -184972056001717211
+      soldier1_die_shaded_1: 6357721291194891708
+      soldier1_die_shaded_2: 6212197351790763056
+      soldier1_die_shaded_3: 3807480735949324867
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
