@@ -20,4 +20,9 @@ public class EnemyCollectableDrop : MonoBehaviour
             collectableSpawner.SpawnCollectable(transform.position);
         }
     }
+
+    public void BossShotgunDrop()
+    {
+        collectableSpawner.SpawnShotgunCollectable(transform.position);
+    }
 }

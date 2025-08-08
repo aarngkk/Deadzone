@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 278fa1c05493ec64aafe056c6bfcf05f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shotgunCollectablePrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

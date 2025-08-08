@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac192ebd74f6554ea206f98a3a49b58, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  bulletPrefab: {fileID: 1140375340985817786, guid: 5f796f67474ad9a45be57187abd6a6de, type: 3}
+  bulletSpeed: 8
+  maxAmmo: 15
+  timeBetweenShots: 0.4
+  reloadDuration: 1.5
+  fireSound: {fileID: 8300000, guid: 5dbf3774724db55429629a6ff3fc60a3, type: 3}
+  fireVolume: 1
+  bulletOffset: {x: 0.1293, y: 0.3280001}

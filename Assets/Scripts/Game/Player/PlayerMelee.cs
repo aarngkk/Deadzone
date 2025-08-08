@@ -11,7 +11,11 @@ public class PlayerMelee : MonoBehaviour
     public GameObject meleeHitbox;
     private Animator animator;
     private bool meleeContinuously;
-    private float lastMeleeTime;
+    private float lastMeleeTime = 0;
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip[] meleeAudioClips;
+    [SerializeField] private float meleeVolume = 1f;
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class PlayerMelee : MonoBehaviour
 
     private IEnumerator PerformMeleeAttack()
     {
+        SoundFXManager.instance.PlayNonRepeatingRandomClip(meleeAudioClips, transform, meleeVolume, gameObject.name + "_Melee");
         meleeHitbox.SetActive(true);
         yield return new WaitForSeconds(meleeDuration);
         meleeHitbox.SetActive(false);

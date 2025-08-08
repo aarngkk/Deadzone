@@ -3,22 +3,35 @@ using UnityEngine;
 
 public class AmmoUI : MonoBehaviour
 {
-    private TMP_Text ammoText;
+    [SerializeField] TMP_Text ammoText;
+    [SerializeField] TMP_Text ammoExtrusionText;
+    [SerializeField] private PlayerShoot playerShoot;
+    [SerializeField] private PlayerLoadout playerLoadout;
 
-    private void Awake()
+    public void UpdateAmmoUI()
     {
-        ammoText = GetComponent<TMP_Text>();
-    }
-
-    public void UpdateAmmoUI(PlayerShoot playerShoot)
-    {
-        if (playerShoot.IsReloading)
+        if (playerShoot.IsReloading && playerLoadout.equippedWeapon != WeaponType.Shotgun)
         {
             ammoText.text = "Reloading...";
+            ammoExtrusionText.text = "Reloading...";
         }
         else
         {
-            ammoText.text = $"Ammo: {playerShoot._currentAmmo}/{playerShoot._maxAmmo}";
+            switch (playerLoadout.equippedWeapon)
+            {
+                case WeaponType.Pistol:
+                    ammoText.text = $"Ammo: {playerShoot._pistolCurrentAmmo}/{playerShoot._pistolAmmo}";
+                    ammoExtrusionText.text = $"Ammo: {playerShoot._pistolCurrentAmmo}/{playerShoot._pistolAmmo}";
+                    break;
+                case WeaponType.Shotgun:
+                    ammoText.text = $"Ammo: {playerShoot._shotgunCurrentAmmo}/{playerShoot._shotgunAmmo}";
+                    ammoExtrusionText.text = $"Ammo: {playerShoot._shotgunCurrentAmmo}/{playerShoot._shotgunAmmo}";
+                    break;
+                default:
+                    ammoText.text = "No Weapon";
+                    ammoExtrusionText.text = "No Weapon";
+                    break;
+            }
         }
     }
 }

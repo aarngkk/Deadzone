@@ -87,7 +87,7 @@ MonoBehaviour:
   rotationSpeed: 200
   screenBorder: -30
   obstacleCheckCircleRadius: 0.2
-  obstacleCheckDistance: 1
+  obstacleCheckDistance: 0.6
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 833
@@ -189,6 +189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 30
   maximumHealth: 30
+  hurtAudioClips: []
+  hurtVolume: 1
+  deathAudioClips: []
+  deathVolume: 1
   OnDied:
     m_PersistentCalls:
       m_Calls:

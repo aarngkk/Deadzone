@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Camera mainCamera;
+    [SerializeField] private float damage;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class Bullet : MonoBehaviour
         if (collision.GetComponent<EnemyMovement>())
         {
             HealthController healthController = collision.GetComponent<HealthController>();
-            healthController.TakeDamage(10);  
+            healthController.TakeDamage(damage);  
         }
 
         Destroy(gameObject);
