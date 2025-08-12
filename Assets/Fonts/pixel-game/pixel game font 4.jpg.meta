@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pixel game font 4_0: -4962761359468700012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

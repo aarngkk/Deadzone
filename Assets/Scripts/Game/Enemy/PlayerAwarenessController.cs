@@ -31,4 +31,9 @@ public class PlayerAwarenessController : MonoBehaviour
             AwareOfPlayer = false;
         }
     }
+
+    public void IncreaseAwareness(float awarenessDistance)
+    {
+        playerAwarenessDistance = awarenessDistance;
+    }
 }

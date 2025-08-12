@@ -13,8 +13,13 @@ public class Collectable : MonoBehaviour
     {
         var player = collision.GetComponent<PlayerMovement>();
 
-        if (player != null )
+        if (player != null)
         {
+            if (gameObject.GetComponent<HealthCollectableBehaviour>() != null && player.GetComponent<HealthController>().RemainingHealthPercentage == 1)
+            {
+                return;
+            }
+
             collectableBehaviour.OnCollected(player.gameObject);
             Destroy(gameObject);
         }

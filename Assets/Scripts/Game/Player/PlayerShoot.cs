@@ -193,8 +193,11 @@ public class PlayerShoot : MonoBehaviour
             OnAmmoUIUpdate.Invoke();
         }
 
-        StopCoroutine(reloadCoroutine);
-        reloadCoroutine = null;
+        if (reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+            reloadCoroutine = null;
+        }
     }
 
     IEnumerator ShotgunPumpCoroutine()

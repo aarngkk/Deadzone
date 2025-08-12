@@ -29,9 +29,9 @@ public class SoundFXManager : MonoBehaviour
         return audioSource;
     }
 
-    public void PlayNonRepeatingRandomClip(AudioClip[] clips, Transform spawnTransform, float volume, string clipGroupID)
+    public AudioSource PlayNonRepeatingRandomClip(AudioClip[] clips, Transform spawnTransform, float volume, string clipGroupID)
     {
-        if (clips == null || clips.Length == 0) return;
+        if (clips == null || clips.Length == 0) return null;
 
         int lastIndex = lastPlayedClipIndexMap.ContainsKey(clipGroupID) ? lastPlayedClipIndexMap[clipGroupID] : -1;
         int newIndex;
@@ -49,7 +49,8 @@ public class SoundFXManager : MonoBehaviour
         }
 
         lastPlayedClipIndexMap[clipGroupID] = newIndex;
-        PlaySoundFXClip(clips[newIndex], spawnTransform, volume);
+        AudioSource audioSource = PlaySoundFXClip(clips[newIndex], spawnTransform, volume);
+        return audioSource;
     }
 
     public AudioSource PlayLoopingSoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)

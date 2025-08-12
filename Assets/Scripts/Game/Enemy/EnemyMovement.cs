@@ -5,6 +5,11 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public float Speed
+    {
+        get => speed; 
+        set => speed = Mathf.Max(0, value);
+    }
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float screenBorder;
     [SerializeField] private float obstacleCheckCircleRadius;

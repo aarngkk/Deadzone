@@ -14,6 +14,7 @@ public class PlayerLoadout : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Animator animator;
     [SerializeField] private bool unlockShotgun = false;
+    [SerializeField] private CollectableSpawner collectableSpawner;
     [SerializeField] private AnimatorOverrideController pistolAOC;
     [SerializeField] private AnimatorOverrideController shotgunAOC;
 
@@ -23,6 +24,10 @@ public class PlayerLoadout : MonoBehaviour
     [SerializeField] private float pistolRackVolume = 1f;
     [SerializeField] private AudioClip shotgunRackClip;
     [SerializeField] private float shotgunRackVolume = 1f;
+
+    [Header("Shotgun Ammo Collectable")]
+    [SerializeField] private GameObject shotgunAmmoPrefab;
+    [SerializeField] private float shotgunAmmoDropChance;
 
     private void Start()
     {
@@ -44,6 +49,11 @@ public class PlayerLoadout : MonoBehaviour
     public void UnlockWeapon(WeaponType type)
     {
         unlockedWeaponTypes.Add(type);
+        
+        if (type == WeaponType.Shotgun)
+        {
+            collectableSpawner.AddAmmoCollectableDrop(WeaponType.Shotgun, shotgunAmmoPrefab, shotgunAmmoDropChance);
+        }
     }
 
     public bool HasWeapon(WeaponType type)
