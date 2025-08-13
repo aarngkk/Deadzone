@@ -97,12 +97,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8103217106121511166}
   - component: {fileID: 315515067912978452}
-  - component: {fileID: 410124962709564290}
   - component: {fileID: 9167211651415553665}
   - component: {fileID: -8397741821917109195}
   - component: {fileID: 5865408717478561301}
+  - component: {fileID: -4339794550914440606}
+  - component: {fileID: -6760408693181672293}
   m_Layer: 0
-  m_Name: Destroyable Furniture
+  m_Name: Destructible Furniture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0991017502b5e614abc280fdc8810415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  maximumHealth: 10
+  currentHealth: 30
+  maximumHealth: 30
   hurtAudioClips: []
   hurtVolume: 1
   deathAudioClips: []
@@ -157,7 +158,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 410124962709564290}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyCollectableDrop, Assembly-CSharp
         m_MethodName: RandomlyDropCollectable
         m_Mode: 1
@@ -171,23 +172,22 @@ MonoBehaviour:
         m_CallState: 2
   OnDamaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -6760408693181672293}
+        m_TargetAssemblyTypeName: EnemyDamagedFlash, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &410124962709564290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6655706624693600499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b7506a97f321e48b6d19a77a7300e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chanceOfCollectableDrop: 1
 --- !u!61 &9167211651415553665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,3 +273,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4339794550914440606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655706624693600499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c8a127ea00225479cec7c90f6530dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6760408693181672293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6655706624693600499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151316bddd495f741ab4d96ca3579937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  flashColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 1}
+  numberOfFlashes: 1

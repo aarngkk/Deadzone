@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Deadzone Icon_0: -8179704313407299184
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

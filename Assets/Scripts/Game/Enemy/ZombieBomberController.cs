@@ -14,6 +14,7 @@ public class ZombieBomberController : MonoBehaviour
     private AudioSource triggeredAudio;
     private EnemyMovement enemyMovement;
     private bool explosionTriggered = false;
+    private bool isAggroed = false;
 
     [SerializeField] private CircleCollider2D explosionCollider;
     [SerializeField] private float explosionTriggerDistance;
@@ -107,8 +108,13 @@ public class ZombieBomberController : MonoBehaviour
 
     public void TriggerAggro()
     {
-        triggeredAudio = SoundFXManager.instance.PlayNonRepeatingRandomClip(triggeredAudioClips, transform, triggeredVolume, gameObject.name + "_Triggered");
-        enemyMovement.Speed = increasedSpeed;
-        animator.SetBool("IsRunning", true);
+        if (!isAggroed)
+        {
+            triggeredAudio = SoundFXManager.instance.PlayNonRepeatingRandomClip(triggeredAudioClips, transform, triggeredVolume, gameObject.name + "_Triggered");
+            enemyMovement.Speed = increasedSpeed;
+            animator.SetBool("IsRunning", true);
+        }
+
+        isAggroed = true;
     }
 }

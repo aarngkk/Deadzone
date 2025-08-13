@@ -36,7 +36,7 @@ public class PlayerLoadout : MonoBehaviour
         animator = GetComponent<Animator>();
         
         unlockedWeaponTypes.Add(WeaponType.Pistol);
-        if (unlockShotgun) unlockedWeaponTypes.Add(WeaponType.Shotgun);
+        if (unlockShotgun) UnlockWeapon(WeaponType.Shotgun);
         equippedWeapon = WeaponType.Pistol;
         SoundFXManager.instance.PlaySoundFXClip(pistolRackClip, transform, pistolRackVolume);
     }
