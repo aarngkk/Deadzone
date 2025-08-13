@@ -56,6 +56,18 @@ PrefabInstance:
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5865408717478561301, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: m_Mass
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865408717478561301, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: m_LinearDamping
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865408717478561301, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: m_AngularDamping
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6655706624693600499, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: m_Name
       value: Supply Crate

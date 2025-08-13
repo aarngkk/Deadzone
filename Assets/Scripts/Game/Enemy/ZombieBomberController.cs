@@ -48,7 +48,7 @@ public class ZombieBomberController : MonoBehaviour
         if (enemyToPlayerVector.magnitude <= explosionTriggerDistance && !explosionTriggered)
         {
             Debug.Log("Tick, tock, tick, tock!");
-            TriggerAggro();
+            TriggerAggro(true);
             explosionTriggered = true;
             explosionCoroutine = StartCoroutine(ExplosionCoroutine(explosionDelay));
         }
@@ -106,9 +106,9 @@ public class ZombieBomberController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionTriggerDistance);
     }
 
-    public void TriggerAggro()
+    public void TriggerAggro(bool inTriggerRange)
     {
-        if (!isAggroed)
+        if (!isAggroed || inTriggerRange)
         {
             triggeredAudio = SoundFXManager.instance.PlayNonRepeatingRandomClip(triggeredAudioClips, transform, triggeredVolume, gameObject.name + "_Triggered");
             enemyMovement.Speed = increasedSpeed;
