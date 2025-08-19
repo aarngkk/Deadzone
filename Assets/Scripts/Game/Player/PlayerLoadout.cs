@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-public enum WeaponType { Pistol, Shotgun }
+public enum WeaponType { Pistol, Shotgun, RocketLauncher }
 
 public class PlayerLoadout : MonoBehaviour
 {
@@ -14,9 +14,11 @@ public class PlayerLoadout : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Animator animator;
     [SerializeField] private bool unlockShotgun = false;
+    [SerializeField] private bool unlockRocketLauncher = false;
     [SerializeField] private CollectableSpawner collectableSpawner;
     [SerializeField] private AnimatorOverrideController pistolAOC;
     [SerializeField] private AnimatorOverrideController shotgunAOC;
+    [SerializeField] private AnimatorOverrideController rocketLauncherAOC;
 
     [Header("Sound Effects")]
     private AudioSource weaponDeployAudio;
@@ -24,6 +26,8 @@ public class PlayerLoadout : MonoBehaviour
     [SerializeField] private float pistolRackVolume = 1f;
     [SerializeField] private AudioClip shotgunRackClip;
     [SerializeField] private float shotgunRackVolume = 1f;
+    [SerializeField] private AudioClip rocketLauncherDeployClip;
+    [SerializeField] private float rocketLauncherDeployVolume = 1f;
 
     [Header("Shotgun Ammo Collectable")]
     [SerializeField] private GameObject shotgunAmmoPrefab;
@@ -37,6 +41,7 @@ public class PlayerLoadout : MonoBehaviour
         
         unlockedWeaponTypes.Add(WeaponType.Pistol);
         if (unlockShotgun) UnlockWeapon(WeaponType.Shotgun);
+        if (unlockRocketLauncher) UnlockWeapon(WeaponType.RocketLauncher);
         equippedWeapon = WeaponType.Pistol;
         SoundFXManager.instance.PlaySoundFXClip(pistolRackClip, transform, pistolRackVolume);
     }
@@ -90,6 +95,18 @@ public class PlayerLoadout : MonoBehaviour
             weaponDeployAudio = SoundFXManager.instance.PlaySoundFXClip(shotgunRackClip, transform, shotgunRackVolume);
 
             Debug.Log("Equipped shotgun.");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && HasWeapon(WeaponType.RocketLauncher) && equippedWeapon != WeaponType.RocketLauncher)
+        {
+            playerShoot.CancelReload();
+            CancelWeaponDeploy();
+            animator.SetInteger("WeaponType", 2);
+            equippedWeapon = WeaponType.RocketLauncher;
+            animator.runtimeAnimatorController = rocketLauncherAOC;
+            OnAmmoUIUpdate.Invoke();
+            weaponDeployAudio = SoundFXManager.instance.PlaySoundFXClip(rocketLauncherDeployClip, transform, rocketLauncherDeployVolume);
+            Debug.Log("Equipped rocket launcher.");
         }
 
         playerShoot.CancelFireInputBuffering();

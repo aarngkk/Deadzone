@@ -46,8 +46,16 @@ public class PlayerMelee : MonoBehaviour
         meleeHitbox.SetActive(false);
     }
 
-    private void OnMelee(InputValue inputValue)
+    public void OnMelee(InputAction.CallbackContext context)
     {
-        meleeContinuously = inputValue.isPressed;
+        if (context.performed)
+        {
+            meleeContinuously = true;
+        }
+
+        else if (context.canceled)
+        {
+            meleeContinuously = false;
+        }
     }
 }

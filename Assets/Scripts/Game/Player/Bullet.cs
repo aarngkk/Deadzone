@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Camera mainCamera;
     [SerializeField] private float damage;
+    private PolygonCollider2D mapBounds;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        mapBounds = GameObject.FindWithTag("MapBounds").GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
     {
-        DestroyWhenOffScreen();
+        DestroyWhenOutOfBounds();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,13 +28,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void DestroyWhenOffScreen()
+    private void DestroyWhenOutOfBounds()
     {
-        Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
-
-        if (screenPosition.x < 0 || screenPosition.x > mainCamera.pixelWidth || screenPosition.y < 0 || screenPosition.y > mainCamera.pixelHeight)
+        if (mapBounds != null)
         {
-            Destroy(gameObject);
+            if (!mapBounds.OverlapPoint(transform.position))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

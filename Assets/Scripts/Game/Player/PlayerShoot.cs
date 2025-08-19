@@ -39,6 +39,19 @@ public class PlayerShoot : MonoBehaviour
     public int _shotgunCurrentAmmo => shotgunCurrentAmmo;
     private bool isShotgunPumping = false;
 
+    [Header("Rocket Launcher")]
+    [SerializeField] private GameObject rocketPrefab;
+    [SerializeField] private float rocketSpeed;
+    [SerializeField] private Transform rocketLauncherOffset;
+    [SerializeField] private float rocketLauncherFireRate;
+    [SerializeField] private float rocketLauncherReloadDuration;
+    [SerializeField] private int rocketLauncherAmmo;
+    [SerializeField] private int rocketLauncherMagSize = 1;
+    [SerializeField] private int rocketLauncherCurrentAmmo = 1;
+    public int _rocketLauncherAmmo => rocketLauncherAmmo;
+    public int _rocketLauncherCurrentAmmo => rocketLauncherCurrentAmmo;
+
+
     [Header("Sound Effects")]
     private AudioSource currentReloadAudio;
     [SerializeField] private AudioClip pistolShotClip;
@@ -51,6 +64,10 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float shotgunShotVolume = 1f;
     [SerializeField] private AudioClip shotgunPumpClip;
     [SerializeField] private float shotgunPumpVolume = 1f;
+    [SerializeField] private AudioClip rocketLauncherShotClip;
+    [SerializeField] private float rocketLauncherShotVolume = 1f;
+    [SerializeField] private AudioClip rocketLauncherReloadAudioClip;
+    [SerializeField] private float rocketLauncherReloadVolume = 1f;
 
     private Animator animator;
     private bool fireContinuously;
@@ -68,6 +85,7 @@ public class PlayerShoot : MonoBehaviour
     {
         playerLoadout = GetComponent<PlayerLoadout>();
         animator = GetComponent<Animator>();
+        lastFireTime = -Mathf.Infinity;
         pistolCurrentAmmo = pistolMagSize;
         OnAmmoUIUpdate?.Invoke();
     }
@@ -113,7 +131,28 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if (((equippedWeapon == WeaponType.Pistol && pistolCurrentAmmo == 0) || (equippedWeapon == WeaponType.Shotgun && shotgunCurrentAmmo == 0)) && !isReloading && !isShotgunPumping)
+        else if (equippedWeapon == WeaponType.RocketLauncher)
+        {
+            if ((fireContinuously || fireSingle) && rocketLauncherCurrentAmmo > 0 && !isReloading)
+            {
+                float timeSinceLastFire = Time.time - lastFireTime;
+
+                if (timeSinceLastFire > rocketLauncherFireRate)
+                {
+                    FireRocket();
+
+                    lastFireTime = Time.time;
+                    fireSingle = false;
+                    rocketLauncherCurrentAmmo--;
+                    OnAmmoUIUpdate?.Invoke();
+                }
+            }
+
+                    
+
+        }
+
+        if (((equippedWeapon == WeaponType.Pistol && pistolCurrentAmmo == 0) || (equippedWeapon == WeaponType.Shotgun && shotgunCurrentAmmo == 0) || (equippedWeapon == WeaponType.RocketLauncher && rocketLauncherCurrentAmmo == 0) && !isReloading && !isShotgunPumping))
         {
             if (reloadCoroutine == null)
             {
@@ -146,6 +185,16 @@ public class PlayerShoot : MonoBehaviour
         SoundFXManager.instance.PlaySoundFXClip(shotgunShotClip, transform, shotgunShotVolume);
         isShotgunPumping = true;
         shotgunPumpCoroutine = StartCoroutine(ShotgunPumpCoroutine());
+    }
+
+    private void FireRocket()
+    {
+        SoundFXManager.instance.PlaySoundFXClip(rocketLauncherShotClip, transform, rocketLauncherShotVolume);
+
+        GameObject rocket = Instantiate(rocketPrefab, rocketLauncherOffset.position, transform.rotation);
+
+        Rigidbody2D rigidbody = rocket.GetComponent<Rigidbody2D>();
+        rigidbody.linearVelocity = rocketSpeed * transform.up;
     }
 
     private IEnumerator Reload()
@@ -193,6 +242,29 @@ public class PlayerShoot : MonoBehaviour
             OnAmmoUIUpdate.Invoke();
         }
 
+        else if (equippedWeapon == WeaponType.RocketLauncher)
+        {
+            isReloading = true;
+
+            while (rocketLauncherCurrentAmmo < rocketLauncherMagSize && rocketLauncherAmmo > 0)
+            {                
+                animator.SetTrigger("IsReloading");
+
+                currentReloadAudio = SoundFXManager.instance.PlaySoundFXClip(rocketLauncherReloadAudioClip, transform, rocketLauncherReloadVolume);
+
+                OnAmmoUIUpdate.Invoke();
+                yield return new WaitForSeconds(rocketLauncherReloadDuration);
+                AmmoUpdate();
+                OnAmmoUIUpdate.Invoke();
+
+                if (fireSingle || fireContinuously) break;
+            }
+
+            isReloading = false;
+            animator.SetTrigger("Idle");
+            OnAmmoUIUpdate.Invoke();
+        }
+
         if (reloadCoroutine != null)
         {
             StopCoroutine(reloadCoroutine);
@@ -236,12 +308,11 @@ public class PlayerShoot : MonoBehaviour
         animator.SetTrigger("Idle");
     }
 
-    private void OnFire(InputValue inputValue)
+    public void OnFire(InputAction.CallbackContext context)
     {
-        fireContinuously = inputValue.isPressed;
-
-        if (inputValue.isPressed)
+        if (context.performed)
         {
+            fireContinuously = true;
             fireSingle = true;
 
             if (isReloading && equippedWeapon == WeaponType.Shotgun && shotgunCurrentAmmo != 0)
@@ -249,11 +320,16 @@ public class PlayerShoot : MonoBehaviour
                 CancelReload();
             }
         }
+
+        else if (context.canceled)
+        {
+            fireContinuously = false;
+        }
     }
 
-    private void OnReload(InputValue inputValue)
+    public void OnReload(InputAction.CallbackContext context)
     {
-        if (!isReloading)
+        if (context.performed && !isReloading)
         {
             if (reloadCoroutine == null)
             {
@@ -286,6 +362,12 @@ public class PlayerShoot : MonoBehaviour
             shotgunCurrentAmmo++;
             shotgunAmmo--;
         }
+
+        else if (equippedWeapon == WeaponType.RocketLauncher)
+        {
+            rocketLauncherCurrentAmmo++;
+            rocketLauncherAmmo--;
+        }
     }
 
     public void AddAmmo(int amountToAdd, WeaponType weaponType)
@@ -303,10 +385,33 @@ public class PlayerShoot : MonoBehaviour
             Debug.Log("Picked up shotgun ammo.");
             OnAmmoUIUpdate.Invoke();
         }
+
+        if (weaponType == WeaponType.RocketLauncher)
+        {
+            rocketLauncherAmmo += amountToAdd;
+            OnAmmoUIUpdate.Invoke();
+        }
     }
 
     public void CancelFireInputBuffering()
     {
         fireSingle = false;
+    }
+
+    public int ReloadTurret(int reloadAmount)
+    {
+        if (pistolAmmo >= reloadAmount)
+        {
+            pistolAmmo -= reloadAmount;
+            OnAmmoUIUpdate.Invoke();
+            return reloadAmount;
+        }
+        else
+        {
+            int ammoGiven = pistolAmmo;
+            pistolAmmo = 0;
+            OnAmmoUIUpdate.Invoke();
+            return ammoGiven;
+        }
     }
 }
