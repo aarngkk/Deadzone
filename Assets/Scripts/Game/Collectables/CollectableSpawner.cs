@@ -25,7 +25,6 @@ public class CollectableSpawner : MonoBehaviour
         }
 
         float randomValue = UnityEngine.Random.value * totalChance;
-        Debug.Log("Drop value: " + randomValue);
         float cumulative = 0f;
 
         foreach (var item in collectables)

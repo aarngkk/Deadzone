@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 20
+  destructibleObjectDamageFactor: 0.25
+  attackDestructibleCooldown: 1
+  destructibleObjectLayerName: Destructible Object
 --- !u!95 &5167598256169668198
 Animator:
   serializedVersion: 7

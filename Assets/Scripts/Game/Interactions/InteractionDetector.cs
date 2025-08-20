@@ -7,20 +7,21 @@ public class InteractionDetector : MonoBehaviour
     private List<IInteractable> interactablesInRange = new List<IInteractable>();
     private IInteractable closestInteractable = null;
 
-    [SerializeField] private GameObject interactionIcon;
+    [SerializeField] private GameObject interactionIconObject;
+    [SerializeField] private Sprite defaultInteractionIcon;
     [SerializeField] private float interactionIconOffset = 0.7f;
 
     void Start()
     {
-        interactionIcon.SetActive(false);
+        interactionIconObject.SetActive(false);
     }
 
     void LateUpdate()
     {
-        if (interactionIcon.activeSelf)
+        if (interactionIconObject.activeSelf)
         {
-            interactionIcon.transform.position = transform.position + Vector3.up * interactionIconOffset;
-            interactionIcon.transform.rotation = Quaternion.identity;
+            interactionIconObject.transform.position = transform.position + Vector3.up * interactionIconOffset;
+            interactionIconObject.transform.rotation = Quaternion.identity;
         }
     }
 
@@ -42,7 +43,7 @@ public class InteractionDetector : MonoBehaviour
 
             if (closestInteractable != null)
             {
-                SetClosestInteractable(closestInteractable);
+                SetInteractableIcon(closestInteractable);
                 closestInteractable.Interact();
             }
         }
@@ -53,7 +54,7 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable interactable) && interactable.canInteract())
         {
             interactablesInRange.Add(interactable);
-            if (!interactionIcon.activeSelf) interactionIcon.SetActive(true);
+            SetInteractableIcon(interactable);
         }
     }
 
@@ -70,18 +71,22 @@ public class InteractionDetector : MonoBehaviour
 
             if (interactablesInRange.Count == 0)
             {
-                interactionIcon.SetActive(false);
+                interactionIconObject.SetActive(false);
             }
         }
     }
 
-    private void SetClosestInteractable(IInteractable interactable)
+    private void SetInteractableIcon(IInteractable interactable)
     {
         if (interactable.getInteractionIcon() != null)
         {
-            interactionIcon.GetComponent<SpriteRenderer>().sprite = interactable.getInteractionIcon();
+            interactionIconObject.GetComponent<SpriteRenderer>().sprite = interactable.getInteractionIcon();
+        }
+        else
+        {
+            interactionIconObject.GetComponent<SpriteRenderer>().sprite = defaultInteractionIcon;
         }
 
-        interactionIcon.SetActive(true);
+        interactionIconObject.SetActive(true);
     }
 }

@@ -106,7 +106,6 @@ public class TurretShoot : MonoBehaviour
         if (turretReloadAudioSource)
         {
             turretReloadAudioSource.Stop();
-            Destroy(turretReloadAudioSource);
             turretReloadAudioSource = null;
         }
     

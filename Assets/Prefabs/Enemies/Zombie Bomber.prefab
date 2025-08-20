@@ -96,6 +96,22 @@ PrefabInstance:
       propertyPath: damageAmount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: attackDestructibleCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectDamageAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectDamageFactor
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4523154930840304115, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: speed
       value: 1
@@ -344,8 +360,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4900826669717459464, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}

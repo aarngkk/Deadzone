@@ -439,7 +439,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54512352365208637, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
       propertyPath: isOpen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54512352365208637, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
       propertyPath: isLocked
@@ -610,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &201942834
 Transform:
   m_ObjectHideFlags: 0
@@ -811,11 +811,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6260511180481067167, guid: a01d995475f5f494a8159cc45183e6c4, type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6260511180481067167, guid: a01d995475f5f494a8159cc45183e6c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6260511180481067167, guid: a01d995475f5f494a8159cc45183e6c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1082,7 +1082,7 @@ Transform:
   m_GameObject: {fileID: 460407332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: -4.43, z: 0}
+  m_LocalPosition: {x: -6.98, y: -5.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1742,8 +1742,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  unlockShotgun: 1
-  unlockRocketLauncher: 1
+  unlockShotgun: 0
+  unlockRocketLauncher: 0
   collectableSpawner: {fileID: 1479444294}
   pistolAOC: {fileID: 22100000, guid: 708df392c305b3f4fb7e9d1af13a16f2, type: 2}
   shotgunAOC: {fileID: 22100000, guid: 45349f904060efe4cb16de5bcdbd5bea, type: 2}
@@ -1838,7 +1838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339b5acfaffca044ad7df80ee36a5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionIcon: {fileID: 1050170618}
+  interactionIconObject: {fileID: 1050170618}
+  defaultInteractionIcon: {fileID: 21300000, guid: b88f6b4fc8e7dad448fcb44633ffabb8, type: 3}
   interactionIconOffset: 0.7
 --- !u!1 &519420028
 GameObject:
@@ -1972,7 +1973,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: -4.43, z: -10}
+  m_LocalPosition: {x: -6.98, y: -5.28, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2833,7 +2834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54512352365208637, guid: 686306e344247824cada6d5611607826, type: 3}
       propertyPath: isOpen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54512352365208637, guid: 686306e344247824cada6d5611607826, type: 3}
       propertyPath: isLocked
@@ -4944,7 +4945,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54512352365208637, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
       propertyPath: isOpen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54512352365208637, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
       propertyPath: isLocked
@@ -6195,7 +6196,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54512352365208637, guid: 686306e344247824cada6d5611607826, type: 3}
       propertyPath: isOpen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54512352365208637, guid: 686306e344247824cada6d5611607826, type: 3}
       propertyPath: isLocked
@@ -6427,7 +6428,7 @@ Transform:
   m_GameObject: {fileID: 1503411022}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: -4.43, z: -10}
+  m_LocalPosition: {x: -6.98, y: -5.28, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

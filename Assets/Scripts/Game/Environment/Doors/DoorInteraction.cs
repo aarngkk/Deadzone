@@ -11,9 +11,11 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     }
 
     [SerializeField] private DoorSide doorSide;
-    [SerializeField] private bool isOpen;
-    [SerializeField] private float animationDuration = 0.3f;
+    [SerializeField] private bool isOpen;    
     [SerializeField] private bool isLocked;
+    [SerializeField] private float animationDuration = 0.3f;
+    [SerializeField] private float lockedDoorShakeIntensity;
+    [SerializeField] private int lockedDoorShakes;
     [SerializeField] private Sprite interactionSprite;
 
     [Header("Sound Effects")]
@@ -26,6 +28,12 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     private AudioSource doorAudioSource;
 
     private Coroutine doorCoroutine;
+    private Transform playerTransform;
+
+    private void Awake()
+    {
+        playerTransform = GameObject.FindWithTag("Player").transform;
+    }
 
     private void Start()
     {
@@ -57,12 +65,12 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         if (doorAudioSource != null)
         {
             doorAudioSource.Stop();
-            Destroy(doorAudioSource);
             doorAudioSource = null;
         }
 
         if (isLocked)
         {
+            StartCoroutine(ShakeLockedDoor());
             doorAudioSource = SoundFXManager.instance.PlayNonRepeatingRandomClip(doorLockedAudioClips, transform, doorLockedVolume, gameObject.name + "_Locked");
             return;
         }
@@ -75,7 +83,17 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         float targetAngle = 0f;
         if (!isOpen)
         {
-            targetAngle = (doorSide == DoorSide.Left) ? 120f : -120f;
+            Vector3 playerPosition = playerTransform.position;
+            bool playerAboveDoor = playerPosition.y > transform.position.y;
+
+            if (playerAboveDoor)
+            {
+                targetAngle = (doorSide == DoorSide.Left) ? -120f : 120f;
+            }
+            else if (!playerAboveDoor)
+            {
+                targetAngle = (doorSide == DoorSide.Left) ? 120f : -120f;
+            }                
         }
 
         if (targetAngle == 0f)
@@ -105,5 +123,20 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         }
 
         transform.rotation = endRotation;
+    }
+
+    private IEnumerator ShakeLockedDoor()
+    {
+        for (int i = 0; i < lockedDoorShakes; i++)
+        {
+            transform.position += new Vector3(0f, lockedDoorShakeIntensity, 0f);
+            yield return new WaitForSeconds(0.1f);
+            transform.position += new Vector3(0f, -lockedDoorShakeIntensity * 2, 0f);
+            yield return new WaitForSeconds(0.1f);
+            transform.position += new Vector3(0f, lockedDoorShakeIntensity * 2, 0f);
+            yield return new WaitForSeconds(0.1f);
+            transform.position += new Vector3(0f, -lockedDoorShakeIntensity, 0f);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

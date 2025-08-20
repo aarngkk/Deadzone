@@ -13,6 +13,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -30,6 +34,14 @@ PrefabInstance:
       objectReference: {fileID: -364893913362748260}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 808272679090401977}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 808272679090401977}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
@@ -53,6 +65,14 @@ PrefabInstance:
       value: PlayDestroyedAudio
       objectReference: {fileID: 0}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayTakeDamageAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ParticleManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -62,6 +82,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: DestructibleAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DestructibleAudioController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
@@ -84,9 +108,13 @@ PrefabInstance:
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 315515067912978452, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
+      propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5682861074210328889, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5865408717478561301, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: m_Mass
@@ -106,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655706624693600499, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8103217106121511166, guid: bdb4aff506bfb53478b95049e3b6e115, type: 3}
       propertyPath: m_LocalPosition.x
@@ -234,6 +262,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdf431670628fc40b1cc855846e6411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamageAudioClips:
+  - {fileID: 8300000, guid: 8e8437b17d9ab8745981d047ca6c1e1b, type: 3}
+  - {fileID: 8300000, guid: 16632668946900041a6b32520efe5dd7, type: 3}
+  - {fileID: 8300000, guid: 21346bd9daf88134594f25a09fee8151, type: 3}
+  - {fileID: 8300000, guid: 4a2e41b29ea191f47bad54716e269ad7, type: 3}
+  - {fileID: 8300000, guid: 746a872f214ba1b4ba473fe22a3c7212, type: 3}
+  - {fileID: 8300000, guid: 58893952a329fcf46b5eefc1354e1429, type: 3}
+  - {fileID: 8300000, guid: 8986d0fcd9e0c674bb2f767bfe20ba0b, type: 3}
+  - {fileID: 8300000, guid: 962141741dd9b5f4c8585087035b337b, type: 3}
+  - {fileID: 8300000, guid: fd672feba4800674393016d65768a960, type: 3}
+  - {fileID: 8300000, guid: b366df4b38edfff4d90a8e48a439535f, type: 3}
+  - {fileID: 8300000, guid: 3a56177e9567e3e439deae28964dde0a, type: 3}
+  - {fileID: 8300000, guid: 0e3d3b34d2d21f444b883cb1983bd90a, type: 3}
+  takeDamageAudioVolume: 1
   destroyedAudioClips:
   - {fileID: 8300000, guid: 6cb02b200c72f5a40be3ecad2aa5103d, type: 3}
   - {fileID: 8300000, guid: 590af49d7b2c40046a146867b2df77b5, type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7448077337435071701}
   - component: {fileID: 6317366854783939131}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5865408717478561301}
   - component: {fileID: -4339794550914440606}
   - component: {fileID: -6760408693181672293}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Destructible Furniture
   m_TagString: Untagged
   m_Icon: {fileID: 0}

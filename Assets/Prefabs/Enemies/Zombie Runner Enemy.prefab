@@ -20,6 +20,22 @@ PrefabInstance:
       propertyPath: playerAwarenessDistance
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: attackDestructibleCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectDamageAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectDamageFactor
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: destructibleObjectLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4523154930840304115, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: speed
       value: 2.4
