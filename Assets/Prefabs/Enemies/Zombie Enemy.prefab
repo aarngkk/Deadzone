@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 20
   attackCooldown: 0
-  destructibleObjectDamageFactor: 0.25
+  destructibleObjectDamageFactor: 0.125
   attackDestructibleCooldown: 1
   destructibleObjectLayerMask:
     serializedVersion: 2

@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: attackDestructibleCooldown
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: destructibleObjectDamageAmount
@@ -599,6 +599,9 @@ MonoBehaviour:
   destructibleLayerMask:
     serializedVersion: 2
     m_Bits: 102400
+  destructibleObjectLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &5160471655966967952
 MonoBehaviour:
   m_ObjectHideFlags: 0

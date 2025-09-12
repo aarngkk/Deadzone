@@ -1609,7 +1609,7 @@ MonoBehaviour:
   assaultRifleOffset: {fileID: 1489008953}
   assaultRifleFireRate: 0.16
   assaultRifleReloadDuration: 2.5
-  assaultRifleAmmo: 100
+  assaultRifleAmmo: 80
   assaultRifleMagSize: 20
   assaultRifleCurrentAmmo: 20
   assaultRifleMaxSpread: 7.5

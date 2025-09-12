@@ -18,6 +18,7 @@ public class BossAttackController : MonoBehaviour
     [SerializeField] private float chargeAudioVolume = 1f;
     [SerializeField] private float destructibleObjectDamageFactor = 6f;
     [SerializeField] private LayerMask destructibleLayerMask;
+    [SerializeField] private LayerMask destructibleObjectLayerMask;
     private EnemyMovement enemyMovement;
     private CircleCollider2D circleCollider;
     private PlayerAwarenessController playerAwarenessController;
@@ -58,10 +59,15 @@ public class BossAttackController : MonoBehaviour
                 StartCoroutine(enemyAttack.Knockback(collision.gameObject, chargeKnockbackDistance, chargeKnockbackSpeed));
                 StartCoroutine(healthController.Stun(chargeStunDuration));
             }
-            else if (IsInDestructibleLayer(collision.gameObject.layer))
+            else if (IsInDestructibleLayer(destructibleLayerMask, collision.gameObject.layer))
             {
                 healthController.TakeDamage(chargeAttackDamage * destructibleObjectDamageFactor);
             }
+        }
+        else if (IsInDestructibleLayer(destructibleObjectLayerMask, collision.gameObject.layer))
+        {
+            HealthController healthController = collision.gameObject.GetComponent<HealthController>();
+            healthController.TakeDamage(chargeAttackDamage);
         }
     }
 
@@ -130,8 +136,8 @@ public class BossAttackController : MonoBehaviour
         }
     }
 
-    private bool IsInDestructibleLayer(int layer)
+    private bool IsInDestructibleLayer(LayerMask layerMask, int layer)
     {
-        return (destructibleLayerMask.value & (1 << layer)) != 0;
+        return (layerMask.value & (1 << layer)) != 0;
     }
 }
