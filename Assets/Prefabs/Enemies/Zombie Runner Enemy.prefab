@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1143739092325410307, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: chanceOfCollectableDrop
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2303822624097514523, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: killScore
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2449409456802093256, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: playerAwarenessDistance
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523154930840304115, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: obstacleLayerMask.m_Bits
-      value: 833
+      value: 99137
       objectReference: {fileID: 0}
     - target: {fileID: 4900826669717459464, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_LocalPosition.x

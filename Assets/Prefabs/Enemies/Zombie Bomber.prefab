@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4924487226006032550}
   - component: {fileID: 7893869214796043287}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: Explosion Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1143739092325410307, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: chanceOfCollectableDrop
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2303822624097514523, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: killScore

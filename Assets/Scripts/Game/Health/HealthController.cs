@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,6 +7,8 @@ public class HealthController : MonoBehaviour
 {
     [SerializeField] private float currentHealth;
     [SerializeField] private float maximumHealth;
+    [SerializeField] private float damageResistance = 0f;
+    public float DamageResistance => damageResistance;
 
     [Header("Sound Effects")]
     [SerializeField] private AudioClip[] hurtAudioClips;
@@ -13,7 +16,9 @@ public class HealthController : MonoBehaviour
     [SerializeField] private AudioClip[] deathAudioClips;
     [SerializeField] private float deathVolume = 1f;
 
-    public float RemainingHealthPercentage
+    public bool isStunned;
+
+    public float remainingHealthPercentage
     {
         get
         {
@@ -21,27 +26,25 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    public bool IsInvincible { get; set; }  
+    public bool isInvincible { get; set; }
 
     public UnityEvent OnDied;
 
     public UnityEvent OnDamaged;
 
+    public UnityEvent OnStunned;
+
     public UnityEvent OnHealthChanged;
 
     public void TakeDamage(float damageAmount)
     {
-        if (currentHealth == 0)
-        {
-            return;
-        }
-        
-        if (IsInvincible)
+        if (currentHealth == 0 || isInvincible || damageAmount == 0)
         {
             return;
         }
 
-        currentHealth -= damageAmount;
+        float damage = (damageResistance == 0) ? damageAmount : (damageAmount * (1 - damageResistance));
+        currentHealth -= damage;
 
         OnHealthChanged.Invoke();
 
@@ -87,5 +90,51 @@ public class HealthController : MonoBehaviour
         {
             currentHealth = maximumHealth;
         }
+    }
+
+    public IEnumerator Stun(float stunDuration)
+    {
+        if (currentHealth == 0)
+        {
+            OnDied.Invoke();
+        }
+        else
+        {
+            isStunned = true;
+            StunEffect(true);
+            OnStunned.Invoke();
+
+            yield return new WaitForSeconds(stunDuration);
+
+            isStunned = false;
+            StunEffect(false);
+        }
+    }
+
+    private void StunEffect(bool stunned)
+    {
+        bool enableState = !stunned;
+
+        if (GetComponent<EnemyMovement>())
+        {
+            EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+            if (enemyMovement) enemyMovement.enabled = enableState;
+            EnemyAttack enemyAttack = GetComponent<EnemyAttack>();
+            if (enemyAttack) enemyAttack.enabled = enableState;
+        }
+        else if (GetComponent<PlayerMovement>())
+        {
+            PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+            if (playerMovement) playerMovement.enabled = enableState;
+            PlayerShoot playerShoot = GetComponent<PlayerShoot>();
+            if (playerShoot) playerShoot.enabled = enableState;
+            PlayerMelee playerMelee = GetComponent<PlayerMelee>();
+            if (playerMelee) playerMelee.enabled = enableState;
+        }
+    }
+
+    public void SetDamageResistance(float resistance)
+    {
+        damageResistance = resistance;
     }
 }

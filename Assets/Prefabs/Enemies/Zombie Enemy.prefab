@@ -90,7 +90,7 @@ MonoBehaviour:
   obstacleCheckDistance: 0.6
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 833
+    m_Bits: 99137
 --- !u!114 &2449409456802093256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAwarenessDistance: 5
+  fieldOfViewAngle: 150
+  timeBeforeLosePlayer: 3
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 37128
 --- !u!58 &-5788486288936854357
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,9 +158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 20
+  attackCooldown: 0
   destructibleObjectDamageFactor: 0.25
   attackDestructibleCooldown: 1
-  destructibleObjectLayerName: Destructible Object
+  destructibleObjectLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!95 &5167598256169668198
 Animator:
   serializedVersion: 7
@@ -192,10 +200,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 30
   maximumHealth: 30
+  damageResistance: 0
   hurtAudioClips: []
   hurtVolume: 1
   deathAudioClips: []
   deathVolume: 1
+  isStunned: 0
   OnDied:
     m_PersistentCalls:
       m_Calls:
@@ -286,6 +296,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnStunned:
+    m_PersistentCalls:
+      m_Calls: []
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -326,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b7506a97f321e48b6d19a77a7300e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfCollectableDrop: 0.1
+  chanceOfCollectableDrop: 0.15
 --- !u!114 &-4920332010317397184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashDuration: 0.2
   flashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageResistantFlashColor: {r: 1, g: 0.88113207, b: 0.88113207, a: 1}
   numberOfFlashes: 1
 --- !u!1 &8300182001064231289
 GameObject:

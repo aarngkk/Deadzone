@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  pistolAmmoAmount: 15
-  shotgunAmmoAmount: 6
+  ammoAmount: 6
   ammoPickupClip: {fileID: 8300000, guid: 161df81f6b411174c972014ac78190f1, type: 3}
   ammoPickupVolume: 1

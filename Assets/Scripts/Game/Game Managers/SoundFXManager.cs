@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class SoundFXManager : MonoBehaviour
@@ -7,7 +6,7 @@ public class SoundFXManager : MonoBehaviour
     public static SoundFXManager instance;
 
     [SerializeField] private AudioSource soundFXObject;
-
+    
     private Dictionary<string, int> lastPlayedClipIndexMap = new Dictionary<string, int>();
 
     private void Awake()
@@ -21,6 +20,18 @@ public class SoundFXManager : MonoBehaviour
     public AudioSource PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        float clipLength = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+        return audioSource;
+    }
+
+    public AudioSource PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume, float audibleDistance)
+    {
+        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        audioSource.GetComponent<CircleCollider2D>().radius = audibleDistance;
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();

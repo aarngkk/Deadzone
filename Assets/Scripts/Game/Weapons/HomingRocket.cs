@@ -70,10 +70,4 @@ public class HomingRocket : MonoBehaviour
 
         rb.linearVelocity = transform.up * rocketSpeed;
     }
-    
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
 }

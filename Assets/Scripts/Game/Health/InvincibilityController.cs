@@ -20,8 +20,8 @@ public class InvincibilityController : MonoBehaviour
 
     private IEnumerator InvincibilityCoroutine(float invincibilityDuration, Color flashColor, int numberOfFlashes)
     {
-        healthController.IsInvincible = true;
+        healthController.isInvincible = true;
         yield return spriteflash.FlashCoroutine(invincibilityDuration, flashColor, numberOfFlashes);
-        healthController.IsInvincible = false;
+        healthController.isInvincible = false;
     }
 }

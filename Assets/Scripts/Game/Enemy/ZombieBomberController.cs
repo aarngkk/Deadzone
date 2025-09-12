@@ -9,6 +9,7 @@ public class ZombieBomberController : MonoBehaviour
 
     private Transform player;
     private HealthController healthController;
+    private PlayerAwarenessController playerAwarenessController;
     private Animator animator;
     private Coroutine explosionCoroutine;
     private AudioSource triggeredAudio;
@@ -36,6 +37,7 @@ public class ZombieBomberController : MonoBehaviour
         healthController = GetComponent<HealthController>();
         player = FindFirstObjectByType<PlayerMovement>().transform;
         enemyMovement = GetComponent<EnemyMovement>();
+        playerAwarenessController = GetComponent<PlayerAwarenessController>();
 
         explosionCollider.radius = explosionRadius;
         explosionCollider.enabled = false;
@@ -45,9 +47,8 @@ public class ZombieBomberController : MonoBehaviour
     {
         Vector2 enemyToPlayerVector = player.position - transform.position;
 
-        if (enemyToPlayerVector.magnitude <= explosionTriggerDistance && !explosionTriggered)
+        if (enemyToPlayerVector.magnitude <= explosionTriggerDistance && !explosionTriggered && playerAwarenessController.hasLineOfSight)
         {
-            Debug.Log("Tick, tock, tick, tock!");
             TriggerAggro(true);
             explosionTriggered = true;
             explosionCoroutine = StartCoroutine(ExplosionCoroutine(explosionDelay));
@@ -66,7 +67,7 @@ public class ZombieBomberController : MonoBehaviour
 
         if (healthController != null)
         {
-            healthController.IsInvincible = false;
+            healthController.isInvincible = false;
             healthController.TakeDamage(explosionDamageAmount);
         }
     }
@@ -95,15 +96,6 @@ public class ZombieBomberController : MonoBehaviour
                 bomber.StartCoroutine(bomber.ExplosionCoroutine(chainExplosionDelay));
             }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, explosionTriggerDistance);
     }
 
     public void TriggerAggro(bool inTriggerRange)

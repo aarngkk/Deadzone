@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1225671913986586549, guid: d40c57ab1d78ddf4ea6023a9383b76f0, type: 3}
       propertyPath: m_Size.x
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1225671913986586549, guid: d40c57ab1d78ddf4ea6023a9383b76f0, type: 3}
       propertyPath: m_Size.y
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 1574414230139291183, guid: d40c57ab1d78ddf4ea6023a9383b76f0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cd68b372154020b409b048e9f519c67c, type: 3}
+      objectReference: {fileID: 3566386173792132306, guid: fbc4c2a7cfd34fe46a3ef92a7e6bc863, type: 3}
     - target: {fileID: 1574414230139291183, guid: d40c57ab1d78ddf4ea6023a9383b76f0, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -117,5 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85104a6cbeeaa04488ee2ab4a7aed976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgunPickupClip: {fileID: 8300000, guid: 3ad3156f9e34af3498b8b21727d64e72, type: 3}
-  shotgunPickupVolume: 0.5
+  weaponType: 1
+  weaponPickupClip: {fileID: 8300000, guid: 3ad3156f9e34af3498b8b21727d64e72, type: 3}
+  weaponPickupVolume: 1

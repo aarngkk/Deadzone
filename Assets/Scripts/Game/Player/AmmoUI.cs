@@ -27,6 +27,10 @@ public class AmmoUI : MonoBehaviour
                     ammoText.text = $"Ammo: {playerShoot._shotgunCurrentAmmo}/{playerShoot._shotgunAmmo}";
                     ammoExtrusionText.text = $"Ammo: {playerShoot._shotgunCurrentAmmo}/{playerShoot._shotgunAmmo}";
                     break;
+                case WeaponType.AssaultRifle:
+                    ammoText.text = $"Ammo: {playerShoot._assaultRifleCurrentAmmo}/{playerShoot._assaultRifleAmmo}";
+                    ammoExtrusionText.text = $"Ammo: {playerShoot._assaultRifleCurrentAmmo}/{playerShoot._assaultRifleAmmo}";
+                    break;
                 case WeaponType.RocketLauncher:
                     ammoText.text = $"Ammo: {playerShoot._rocketLauncherCurrentAmmo}/{playerShoot._rocketLauncherAmmo}";
                     ammoExtrusionText.text = $"Ammo: {playerShoot._rocketLauncherCurrentAmmo}/{playerShoot._rocketLauncherAmmo}";

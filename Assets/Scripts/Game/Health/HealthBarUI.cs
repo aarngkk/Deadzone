@@ -7,6 +7,6 @@ public class HealthBarUI : MonoBehaviour
 
     public void UpdateHealthBar(HealthController healthController)
     {
-        healthBarForegroundImage.fillAmount = healthController.RemainingHealthPercentage;
+        healthBarForegroundImage.fillAmount = healthController.remainingHealthPercentage;
     }
 }

@@ -164,6 +164,11 @@ MonoBehaviour:
   explosionRadius: 2
   explodeAudioClip: {fileID: 8300000, guid: 5bbed7296e2677848abba46148bbb86f, type: 3}
   explodeVolume: 0.1
+  explodeAudibleRadius: 16
+  destructibleLayerMask:
+    serializedVersion: 2
+    m_Bits: 36864
+  destructibleObjectDamageFactor: 2
 --- !u!95 &6531232913875396260
 Animator:
   serializedVersion: 7

@@ -11,6 +11,11 @@ public class EnemyMovement : MonoBehaviour
         set => speed = Mathf.Max(0, value);
     }
     [SerializeField] private float rotationSpeed;
+    public float RotationSpeed
+    {
+        get => rotationSpeed;
+        set => rotationSpeed = Mathf.Max(0, value);
+    }
     [SerializeField] private float screenBorder;
     [SerializeField] private float obstacleCheckCircleRadius;
     [SerializeField] private float obstacleCheckDistance;
@@ -127,6 +132,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void SetVelocity()
     {
-            rb.linearVelocity = transform.up * speed;
+        rb.linearVelocity = transform.up * speed;
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public void MoveTowards(Vector2 direction)
+    {
+        targetDirection = direction;
     }
 }

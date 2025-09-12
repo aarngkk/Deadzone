@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7338551633795798673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: takeDamageAudioVolume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: destroyedAudioClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ad1cf999d646210449cd21d6df43f11c, type: 3}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 013f097b9529e39408ac368d9c077887, type: 3}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 63c734e0652d33642a69f96857c94304, type: 3}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: becba4cd07c78144abb9633debef863b, type: 3}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bdecad3ba0b961409a451729a26371e, type: 3}
+    - target: {fileID: 8679759617793211019, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: 'destroyedAudioClips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 576d35ae13ab2de498be3072202943ff, type: 3}
+    - target: {fileID: 8755887286372794537, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: m_Name
+      value: Metal Destructible Door (Right)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d296212833bafb44833dc1429496e76, type: 3}

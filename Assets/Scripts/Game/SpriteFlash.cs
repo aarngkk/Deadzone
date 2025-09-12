@@ -5,20 +5,23 @@ using UnityEngine;
 public class SpriteFlash : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Color startColor;
+    private Coroutine flashCoroutine;
 
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        startColor = spriteRenderer.color;
     }
 
     public void StartFlash(float flashDuration, Color flashColor, int numberOfFlashes)
-    { 
-        StartCoroutine(FlashCoroutine(flashDuration, flashColor, numberOfFlashes));
+    {
+        StopFlashCoroutine();
+        flashCoroutine = StartCoroutine(FlashCoroutine(flashDuration, flashColor, numberOfFlashes));
     }
 
     public IEnumerator FlashCoroutine(float flashDuration, Color flashColor, int numberOfFlashes)
     {
-        Color startColor = spriteRenderer.color;
         float elapsedFlashTime = 0;
         float elapsedFlashPercentage = 0;
 
@@ -36,6 +39,16 @@ public class SpriteFlash : MonoBehaviour
             spriteRenderer.color = Color.Lerp(startColor, flashColor, pingPongPercentage);
 
             yield return null;
+        }
+    }
+
+    private void StopFlashCoroutine()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+            flashCoroutine = null;
+            spriteRenderer.color = startColor;
         }
     }
 }

@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb101d8fd3a2c0b439fcb8fc400d2e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 133bdda8777badb4bad99f7fe416f149, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 7a0859773581e4c419a3bbaba89843ba, type: 3}
 --- !u!4 &1167486147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7898560610482921280, guid: 358e75e5643420044b230c823ce5f925, type: 3}

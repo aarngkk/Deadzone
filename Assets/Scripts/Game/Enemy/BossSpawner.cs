@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject bossZombie;
     [SerializeField] private ScoreController scoreController;
     [SerializeField] private int bossSpawnScore;
     private bool hasBossSpawned = false;
@@ -28,6 +28,6 @@ public class BossSpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
-        Instantiate (bossPrefab, transform.position, Quaternion.identity);
+        bossZombie.SetActive(true);
     }
 }

@@ -8,6 +8,9 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float explosionRadius;
     [SerializeField] private AudioClip explodeAudioClip;
     [SerializeField] private float explodeVolume = 1f;
+    [SerializeField] private float explodeAudibleRadius;
+    [SerializeField] private LayerMask destructibleLayerMask;
+    [SerializeField] private float destructibleObjectDamageFactor = 2f;
 
     private CircleCollider2D explosionCollider;
     private PolygonCollider2D mapBounds;
@@ -42,12 +45,13 @@ public class RocketController : MonoBehaviour
 
         if (healthController.gameObject.GetComponent<PlayerMovement>())
         {
-            healthController.IsInvincible = false;
+            healthController.isInvincible = false;
             healthController.TakeDamage(explosionDamage * 0.75f);
         }
         else
         {
-            healthController.TakeDamage(explosionDamage);
+            float damageDealt = IsInDestructibleLayer(collision.gameObject.layer) ? explosionDamage * destructibleObjectDamageFactor : explosionDamage;
+            healthController.TakeDamage(damageDealt);
         }
         damagedTargets.Add(healthController);
     }
@@ -61,9 +65,14 @@ public class RocketController : MonoBehaviour
         rb.angularVelocity = 0f;
 
         animator.SetTrigger("Explode");
-        SoundFXManager.instance.PlaySoundFXClip(explodeAudioClip, transform, explodeVolume);
+        SoundFXManager.instance.PlaySoundFXClip(explodeAudioClip, transform, explodeVolume, explodeAudibleRadius);
         explosionCollider.enabled = true;
         Destroy(gameObject, 0.5f);
+    }
+
+    private bool IsInDestructibleLayer(int layer)
+    {
+        return (destructibleLayerMask.value & (1 << layer)) != 0;
     }
 
     private void DestroyWhenOutOfBounds()
@@ -75,11 +84,5 @@ public class RocketController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

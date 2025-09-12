@@ -15,24 +15,28 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInputSmoothVelocity;
     private Camera mainCamera;
     private Animator animator;
+    private HealthController healthController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         animator = GetComponent<Animator>();
+        healthController = GetComponent<HealthController>();
     }
 
     private void FixedUpdate()
     {
+        SetAnimation();
+
+        if (healthController.isStunned) return;
         SetPlayerVelocity();
         RotateTowardsMouse();
-        SetAnimation();
     }
 
     private void SetAnimation()
     {
-        bool isMoving = movementInput != Vector2.zero;
+        bool isMoving = (movementInput != Vector2.zero && !healthController.isStunned);
 
         animator.SetBool("IsMoving", isMoving);
     }

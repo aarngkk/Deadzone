@@ -15,7 +15,7 @@ public class Collectable : MonoBehaviour
 
         if (player != null)
         {
-            if (gameObject.GetComponent<HealthCollectableBehaviour>() != null && player.GetComponent<HealthController>().RemainingHealthPercentage == 1)
+            if (gameObject.GetComponent<HealthCollectableBehaviour>() != null && player.GetComponent<HealthController>().remainingHealthPercentage == 1)
             {
                 return;
             }
