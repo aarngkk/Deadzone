@@ -2936,7 +2936,7 @@ MonoBehaviour:
         m_CallState: 2
   unlockShotgun: 0
   unlockAssaultRifle: 0
-  unlockRocketLauncher: 0
+  unlockRocketLauncher: 1
   collectableSpawner: {fileID: 1479444294}
   pistolAOC: {fileID: 22100000, guid: 708df392c305b3f4fb7e9d1af13a16f2, type: 2}
   shotgunAOC: {fileID: 22100000, guid: 45349f904060efe4cb16de5bcdbd5bea, type: 2}
