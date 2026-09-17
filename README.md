@@ -12,3 +12,8 @@ Deadzone is a 2D top-down horde survival shooter game where you play as a grizzl
 - **R** to reload weapon
 - **1-4** to switch to available weapons
 - **E** to interact
+
+## Download and Play
+1. Download `Deadzone.zip` from [Releases](https://github.com/aarngkk/Deadzone/releases/tag/v1.0.0).
+2. Extract the .zip file.
+3. Run `Deadzone.exe`.
