@@ -6,7 +6,7 @@ Deadzone is a 2D top-down horde survival shooter game where you play as a grizzl
 --- 
 
 ## Controls
-- **WASD**: to move
+- **WASD** to move
 - **Mouse** to aim
 - **Left click/hold** to fire weapon
 - **R** to reload weapon
