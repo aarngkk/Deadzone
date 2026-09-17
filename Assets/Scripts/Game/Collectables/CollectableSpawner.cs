@@ -14,7 +14,7 @@ public struct CollectableDrop
 public class CollectableSpawner : MonoBehaviour
 {
     [SerializeField] private List<CollectableDrop> collectables;
-    [SerializeField] private GameObject shotgunCollectablePrefab;
+    [SerializeField] private GameObject rifleCollectablePrefab;
 
     public void SpawnCollectable(Vector2 position)
     {
@@ -38,9 +38,9 @@ public class CollectableSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnShotgunCollectable(Vector2 position)
+    public void SpawnRifleCollectable(Vector2 position)
     {
-        Instantiate(shotgunCollectablePrefab, position, Quaternion.identity);
+        Instantiate(rifleCollectablePrefab, position, Quaternion.identity);
     }
 
     public void AddAmmoCollectableDrop(WeaponType weaponType, GameObject ammoPrefab, float dropChance)

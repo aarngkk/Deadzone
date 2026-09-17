@@ -80,6 +80,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3da2c15f65eee744eb58ba6a91bc3aff, type: 2}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.b
+      value: 0.51886785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.g
+      value: 0.51886785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6558913885632134909, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -90,15 +102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: currentHealth
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: maximumHealth
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: damageResistance
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

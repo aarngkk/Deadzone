@@ -1,15 +1,16 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class TurretAim : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] GameObject gunObject;
+    [SerializeField] private LayerMask lineOfSightMask;
+    [SerializeField] private bool targetPlayer;
     public bool hasTarget
     {
         get; private set;
     }
+    private bool hasLineOfSight;
 
     void Update()
     {
@@ -19,24 +20,29 @@ public class TurretAim : MonoBehaviour
     private void HandleAiming()
     {
         var collidersInRange = Physics2D.OverlapCircleAll(transform.position, range);
-        Vector2 direction = Vector2.zero;
+        GameObject closestEnemy = null;
 
         if (collidersInRange.Length != 0)
         {
             float closestEnemyDistance = Mathf.Infinity;
-            GameObject closestEnemy = null;
 
-            foreach (var collider in collidersInRange)
+            foreach (Collider2D collider in collidersInRange)
             {
-                var enemyInRange = collider.GetComponent<EnemyMovement>();
-                if (enemyInRange != null)
-                {
-                    var distanceToEnemy = Vector2.Distance(transform.position, enemyInRange.gameObject.transform.position);
+                EnemyMovement isEnemy = collider.GetComponent<EnemyMovement>();
+                PlayerMovement isPlayer = collider.GetComponent<PlayerMovement>();
 
-                    if (distanceToEnemy < closestEnemyDistance)
+                if (isEnemy || (targetPlayer && isPlayer))
+                {
+                    Vector2 directionToEnemy = (collider.transform.position - transform.position).normalized;
+                    float distanceToEnemy = Vector2.Distance(transform.position, collider.gameObject.transform.position);
+
+                    RaycastHit2D ray = Physics2D.Raycast(transform.position, directionToEnemy, distanceToEnemy, lineOfSightMask);
+                    hasLineOfSight = (isEnemy) ? (ray.collider != null && ray.collider.CompareTag("Enemy")) : (ray.collider != null && ray.collider.CompareTag("Player"));
+
+                    if (distanceToEnemy < closestEnemyDistance && hasLineOfSight)
                     {
                         closestEnemyDistance = distanceToEnemy;
-                        closestEnemy = enemyInRange.gameObject;
+                        closestEnemy = collider.gameObject;
                     }
                 }
             }
@@ -44,19 +50,14 @@ public class TurretAim : MonoBehaviour
             if (closestEnemy != null)
             {
                 hasTarget = true;
-                direction = (closestEnemy.transform.position - transform.position).normalized;
+                Vector2 targetDirection = (closestEnemy.transform.position - transform.position).normalized;
+                float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+                gunObject.transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
             }
-
             else
             {
                 hasTarget = false;
             }
-        }
-
-        if (direction != Vector2.zero)
-        {
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            gunObject.transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
         }
     }
 

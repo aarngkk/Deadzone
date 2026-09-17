@@ -288,6 +288,7 @@ MonoBehaviour:
   doorSide: 0
   isOpen: 0
   isLocked: 0
+  isRotated: 0
   animationDuration: 0.2
   lockedDoorShakeIntensity: 0.01
   lockedDoorShakes: 3

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapBounds
   - SpawnersToDisable
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - No Collisions
   - Destructible Wall
   - Destructible Soft Obstacle
-  - 
+  - Turret Projectile
   - 
   - 
   - 

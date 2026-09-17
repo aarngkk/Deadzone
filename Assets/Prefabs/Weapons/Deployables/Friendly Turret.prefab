@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 307794022235840234}
   - component: {fileID: 886677489736775289}
   m_Layer: 9
-  m_Name: Turret (Level 1)
+  m_Name: Friendly Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,8 +285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab036ef594168f846b4982d6968b68ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
+  range: 6
   gunObject: {fileID: 5250840514456232768}
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 37184
+  targetPlayer: 0
 --- !u!114 &307794022235840234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +309,8 @@ MonoBehaviour:
   ammoText: {fileID: 2639216756044402577}
   fireRate: 0.8
   bulletSpeed: 12
-  currentAmmo: 45
-  maxAmmo: 45
+  currentAmmo: 60
+  maxAmmo: 60
   reloadDuration: 4.3
   turretShotClip: {fileID: 8300000, guid: d98f6595882366f4d978d67de6492d11, type: 3}
   turretShotVolume: 0.2
@@ -327,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32640761737ba2c42847e8814cfa5d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoPerRefill: 45
+  ammoPerRefill: 60
   interactionSprite: {fileID: -1448572089734514718, guid: de75a92177339ae4d9c358186a874815, type: 3}
 --- !u!1 &4824934330874290189
 GameObject:

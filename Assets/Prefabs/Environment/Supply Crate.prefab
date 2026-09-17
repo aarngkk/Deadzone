@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffdabffcd9c76bd4e87a494ab4079bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesPrefab: {fileID: 898914851083996781, guid: f17e1c325b3cafa4097f79d0f85b6976, type: 3}
+  particlesPrefab: {fileID: 4203723819006703261, guid: 432584696a8625c41b5219a0e24d9d3a, type: 3}
   particlesTransform: {fileID: 0}
   randomiseRotation: 1
 --- !u!114 &8768106360621081642

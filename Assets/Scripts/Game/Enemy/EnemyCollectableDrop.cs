@@ -21,8 +21,8 @@ public class EnemyCollectableDrop : MonoBehaviour
         }
     }
 
-    public void BossShotgunDrop()
+    public void BossRifleDrop()
     {
-        collectableSpawner.SpawnShotgunCollectable(transform.position);
+        collectableSpawner.SpawnRifleCollectable(transform.position);
     }
 }

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2449409456802093256, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: playerAwarenessDistance
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3738178899013811236, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: damageAmount
@@ -92,21 +92,37 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6945cc4cb362c674ca4bd9573fbf8ca7, type: 2}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.b
+      value: 0.49622637
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.g
+      value: 0.49622637
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834711334364677034, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistantFlashColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6558913885632134909, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8312100633114968769, guid: 6c1aa1c5a8e232844a32eb064ecdc9d6, type: 3}
     - target: {fileID: 7037926041125462818, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: m_Name
-      value: Zombie Survivor
+      value: Zombie Police
       objectReference: {fileID: 0}
     - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: currentHealth
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
       propertyPath: maximumHealth
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731932411692344957, guid: 311fd3025ec590c44ab142c54ec855c8, type: 3}
+      propertyPath: damageResistance
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

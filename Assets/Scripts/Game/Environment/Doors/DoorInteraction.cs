@@ -13,6 +13,8 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     [SerializeField] private DoorSide doorSide;
     [SerializeField] private bool isOpen;    
     [SerializeField] private bool isLocked;
+    [SerializeField] private bool isSideways;
+    [SerializeField] private bool limitDoorSwing;
     [SerializeField] private float animationDuration = 0.3f;
     [SerializeField] private float lockedDoorShakeIntensity;
     [SerializeField] private int lockedDoorShakes;
@@ -60,7 +62,7 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         ToggleDoor();
     }
 
-    private void ToggleDoor()
+    public void ToggleDoor()
     {
         if (doorAudioSource != null)
         {
@@ -80,20 +82,38 @@ public class DoorInteraction : MonoBehaviour, IInteractable
             StopCoroutine(doorCoroutine);
         }
 
-        float targetAngle = 0f;
+        float targetAngle = isSideways ? -90f : 0f;
+        float swingAngle = limitDoorSwing ? 90f : 120f;
         if (!isOpen)
         {
             Vector3 playerPosition = playerTransform.position;
-            bool playerAboveDoor = playerPosition.y > transform.position.y;
+            if (!isSideways)
+            {
+                bool playerAboveDoor = playerPosition.y > transform.position.y;
+                
 
-            if (playerAboveDoor)
-            {
-                targetAngle = (doorSide == DoorSide.Left) ? -120f : 120f;
+                if (playerAboveDoor)
+                {
+                    targetAngle = (doorSide == DoorSide.Left) ? targetAngle - swingAngle : targetAngle + swingAngle;
+                }
+                else if (!playerAboveDoor)
+                {
+                    targetAngle = (doorSide == DoorSide.Left) ? targetAngle + swingAngle : targetAngle - swingAngle;
+                }
             }
-            else if (!playerAboveDoor)
+            else
             {
-                targetAngle = (doorSide == DoorSide.Left) ? 120f : -120f;
-            }                
+                bool playerToRightOfDoor = playerPosition.x > transform.position.x;
+
+                if (playerToRightOfDoor)
+                {
+                    targetAngle = (doorSide == DoorSide.Left) ? targetAngle + swingAngle : targetAngle - swingAngle;
+                }
+                else if (!playerToRightOfDoor)
+                {
+                    targetAngle = (doorSide == DoorSide.Left) ? targetAngle - swingAngle : targetAngle + swingAngle;
+                }
+            }
         }
 
         if (targetAngle == 0f)
@@ -138,5 +158,19 @@ public class DoorInteraction : MonoBehaviour, IInteractable
             transform.position += new Vector3(0f, -lockedDoorShakeIntensity, 0f);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void UnlockDoor()
+    {
+        isLocked = false;
+    }
+
+    public void OpenDoor()
+    {
+        if (!isLocked)
+        {
+            isOpen = false;
+            ToggleDoor();
+        }        
     }
 }

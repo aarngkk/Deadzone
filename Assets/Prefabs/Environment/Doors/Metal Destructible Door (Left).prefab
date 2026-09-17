@@ -212,6 +212,26 @@ PrefabInstance:
       propertyPath: maximumHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5794727475723651861, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
+      propertyPath: damageResistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513451168296951706, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
+      propertyPath: damageResistantFlashColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513451168296951706, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
+      propertyPath: damageResistantFlashColor.b
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513451168296951706, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
+      propertyPath: damageResistantFlashColor.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513451168296951706, guid: 0a1fd4c2a60316d4986ce300013cea14, type: 3}
+      propertyPath: damageResistantFlashColor.r
+      value: 0.87058824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

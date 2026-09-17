@@ -572,14 +572,14 @@ MonoBehaviour:
   chargeAttackCollider: {fileID: 2989562977200732474}
   chargeAttackRange: 6
   chargeAttackDamage: 35
-  chargeSpeed: 7.5
+  chargeSpeed: 6
   chargeRotationSpeed: 50
   chargeDistance: 11
   chargeCooldownDuration: 5
   chargeStunDuration: 1.5
   chargeKnockbackDistance: 3
   chargeKnockbackSpeed: 6
-  chargeWindupDuration: 0.75
+  chargeWindupDuration: 1
   chargeAudioClips:
   - {fileID: 8300000, guid: 3e698fff53151e441a121cbec38178e6, type: 3}
   - {fileID: 8300000, guid: 47d9092d8eb8fe848a3903e72c6cd57b, type: 3}

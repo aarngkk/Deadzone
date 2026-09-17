@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 572182472465192129, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: damageResistantFlashColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 572182472465192129, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: damageResistantFlashColor.b
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 572182472465192129, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: damageResistantFlashColor.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 572182472465192129, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: damageResistantFlashColor.r
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431406934775234638, guid: 0d296212833bafb44833dc1429496e76, type: 3}
+      propertyPath: damageResistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6172906732523770020, guid: 0d296212833bafb44833dc1429496e76, type: 3}
       propertyPath: m_LocalScale.x
       value: -1

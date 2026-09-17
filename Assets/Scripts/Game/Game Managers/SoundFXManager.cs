@@ -73,4 +73,15 @@ public class SoundFXManager : MonoBehaviour
         audioSource.Play();
         return audioSource;
     }
+
+    public AudioSource PlayLoopingSoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume, float audibleDistance)
+    {
+        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        audioSource.GetComponent<CircleCollider2D>().radius = audibleDistance;
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.loop = true;
+        audioSource.Play();
+        return audioSource;
+    }
 }
